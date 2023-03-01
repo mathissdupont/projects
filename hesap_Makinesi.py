@@ -1,47 +1,40 @@
-print("Hesap makinesine hoşgeldiniz")
-cikis = 0
-while cikis == 0:
-    print("1-Toplama")
-    print("2-Çıkarma")
-    print("3-Çarpma")
-    print("4-Bölme")
-    print("5-Üs alma")
-    print("6-Kalan bulma")
-    print("Çıkış için -1'e basınız")
-    islem = int(input("Yapmak istediğiniz işlemi sayılarla belirtiniz "))
-    if islem == 1:
-        sayi1 = int(input("Lütfen 1.sayıyı giriniz..."))
-        sayi2 = int(input("Lütfen 2.sayıyı giriniz..."))
-        sonuc = sayi1+ sayi2
-        print(f'"Sonuç :{sonuc}')
-    elif islem == 2 :
-        sayi1 = int(input("Lütfen 1.sayıyı giriniz..."))
-        sayi2 = int(input("Lütfen 2.sayıyı giriniz..."))
-        sonuc = int(sayi1) - int(sayi2)
-        print(sonuc)
-    elif islem == 3:
-        sayi1 = int(input("Lütfen 1.sayıyı giriniz..."))
-        sayi2 = int(input("Lütfen 2.sayıyı giriniz..."))
-        sonuc = sayi1 * sayi2
-        print(sonuc)
-    elif islem == 4 :
-        sayi1 = input("Lütfen 1.sayıyı giriniz...")
-        sayi2 = input("Lütfen 2.sayıyı giriniz...")
-        sonuc = int(sayi1) / int(sayi2)
-        print(sonuc)
-    elif islem == 5 :
-        sayi1 = input("Lütfen tabanını giriniz...")
-        sayi2 = input("Lütfen üssünü giriniz...")
-        sonuc = int(sayi1)**int(sayi2)
-        print(sonuc)
-    elif islem == 6 :
-        sayi1 = int(input("Lütfen bölününce kalanını bulmak istediğiniz sayıyı giriniz..."))
-        sayi2 = int(input("Lütfen böleni giriniz..."))
-        sonuc = sayi1 % sayi2
-        print(sonuc)
-    elif islem == -1 :
-        cikis = -1
-        print("Hoşçakal...")
-    else :
-        print("Hatalı bir tuşlama yaptınız")
-        
+def sumation(number1,number2):
+    return number1 + number2
+
+def extraction(number1,number2):
+    return number1 - number2
+
+def multiplication(number1,number2):
+    return number1 * number2
+
+def division(number1,number2):
+    return number1 / number2
+
+calculateType = {   
+"+" : sumation ,
+"-" : extraction ,
+"*" : multiplication ,
+"/" : division 
+}
+
+def calculator():
+    for symbol in calculateType:
+        print(f"{symbol}")
+    continues = True
+
+    while continues:
+        selectedsymbol = input(f"Please select a symbol for what you want to calculate.  ")
+        number1 = int(input("Please enter first number. "))
+        number2 = int(input("Please enter second number. "))
+        calculating = calculateType[selectedsymbol]
+        result = calculating(number1,number2)
+        print(f"{number1} {selectedsymbol} {number2} = {result}")
+        last = input("Do you want to do new calculate Yes/No ")
+        if last == "No":
+            continues = False
+            print("Good Bye...")
+        elif last == "Yes":
+            continues = True    
+        else:
+            print("You made a wrong keystroke")        
+calculator()
