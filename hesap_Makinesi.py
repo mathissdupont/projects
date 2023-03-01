@@ -17,7 +17,7 @@ while cikis == 0:
     elif islem == 2 :
         sayi1 = int(input("Lütfen 1.sayıyı giriniz..."))
         sayi2 = int(input("Lütfen 2.sayıyı giriniz..."))
-        sonuc = sayi1 - sayi2
+        sonuc = int(sayi1) - int(sayi2)
         print(sonuc)
     elif islem == 3:
         sayi1 = int(input("Lütfen 1.sayıyı giriniz..."))
@@ -27,12 +27,12 @@ while cikis == 0:
     elif islem == 4 :
         sayi1 = input("Lütfen 1.sayıyı giriniz...")
         sayi2 = input("Lütfen 2.sayıyı giriniz...")
-        sonuc = sayi1 / sayi2
+        sonuc = int(sayi1) / int(sayi2)
         print(sonuc)
     elif islem == 5 :
         sayi1 = input("Lütfen tabanını giriniz...")
         sayi2 = input("Lütfen üssünü giriniz...")
-        sonuc = sayi1^sayi2
+        sonuc = int(sayi1)**int(sayi2)
         print(sonuc)
     elif islem == 6 :
         sayi1 = int(input("Lütfen bölününce kalanını bulmak istediğiniz sayıyı giriniz..."))
@@ -41,6 +41,7 @@ while cikis == 0:
         print(sonuc)
     elif islem == -1 :
         cikis = -1
+        print("Hoşçakal...")
     else :
         print("Hatalı bir tuşlama yaptınız")
         
