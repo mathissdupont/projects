@@ -1,0 +1,45 @@
+from tkinter import * 
+Window = Tk()
+title = Window.title("Hesap Makinesi")
+Window.geometry("270x250+300+100")
+Window.resizable(FALSE,FALSE)
+
+depo = ""
+
+screen = Entry(width=40,justify="right")
+screen.grid(row=0,column=0,columnspan=3,ipady=4)
+
+liste = ["1","2","3","4","5","6","7","8","9","0","+","-","/","*","=","C"]
+sayi= ["1","2","3","4","5","6","7","8","9","0"]
+operator = ["+","-","/","*"]
+sira = 1
+sütun = 0
+
+def hesapla(tus):
+    global depo
+    if tus in "0123456789" :
+        screen.insert(END,tus)
+        depo = depo + tus
+    if tus in "+-/*":
+        screen.insert(END,tus)
+        depo = depo + tus
+        
+    
+    if tus == "=":
+        screen.delete(0,END)
+        hesap = eval(depo,{"___builtins___":NONE},{})
+        depo = str(hesap)
+        screen.insert(END,depo)
+    if tus == "C":
+        screen.delete(0,END)
+        depo = ""
+
+for i in liste:
+    komut = lambda x=i : hesapla(x)
+    Button(text=i,font="verdana 8 bold",width=10,height=2,relief=GROOVE,command=komut).grid(row=sira,column=sütun)
+    sütun += 1
+    if sütun > 2:
+        sütun=0
+        sira += 1
+
+mainloop()
